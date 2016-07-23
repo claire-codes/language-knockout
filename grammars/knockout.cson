@@ -1,0 +1,13 @@
+'scopeName': 'source.knockout'
+'name': 'KnockoutJs'
+'fileTypes': ['HTML', 'phtml']
+'patterns': [
+    {'include': 'text.html.basic'},
+    {
+        'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b'
+        'name': 'constant.numeric.knockout'
+    },{
+        'match': 'foo'
+        'name': 'constant.string.knockout'
+    }
+]

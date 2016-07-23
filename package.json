@@ -1,0 +1,14 @@
+{
+  "name": "knockout-highlighter",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "atom": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Claire Parker <claire.parker87@gmail.com>",
+  "license": "MIT"
+}

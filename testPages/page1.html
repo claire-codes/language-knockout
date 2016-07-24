@@ -44,7 +44,9 @@
 
 <body>
     <h1>42</h1>
-    <h2>foo</h2>
+    <h1>foo</h1>
+    <h1>foobar</h1>
+    <h2>ko bum ko</h2>
     <p>First name:
         <input data-bind="value: firstName" />
     </p>
@@ -52,9 +54,12 @@
         <input data-bind="value: lastName" />
     </p>
     <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
+    
+    <!-- ko foreach: 42 foo -->
+        <div>Item <span data-bind="text: $data"></span></div>
+    <!-- /ko -->
 
     <script>
-        // Here's my data model
         var ViewModel = function(first, last) {
             this.firstName = ko.observable(first);
             this.lastName = ko.observable(last);
@@ -63,9 +68,11 @@
                 // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
                 return this.firstName() + " " + this.lastName();
             }, this);
+            this.myItems = ['A', 'B', 'C'];
         };
 
         ko.applyBindings(new ViewModel("Planet", "Earth")); // This makes Knockout get to work
+
     </script>
 </body>
 

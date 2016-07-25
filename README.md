@@ -1,3 +1,11 @@
+# language-knockout
+
+Knockout language package for Atom editor.
+
+There is currently no special syntac highlighting for some special parts of the KnockoutJs library/framework/mess - it's almost as if no one uses KnockoutJs anymore! 😲
+
+### Notes
+
 This is what we originally had:
 
 ```html
@@ -9,8 +17,6 @@ This is what we originally had:
 ```
 
 `if` and `for` are keyword control js.
-
-Can't get it to override existing HTML comments.
 
 It seems to take the first one it comes across: if I put two patterns for the same symbol in the same cson file, it uses the first one in the file.
 
@@ -38,6 +44,4 @@ Try this as an example too - switch the order
 }
 ```
 
-I think the only way to do this is to copy and paste the HTML in.
-
-SO TRY IT WITH THE INCLUDES HTML AFTER THE CUSTOM?!
+cson files are the opposite of CSS stylesheets - they take the first rule they find and stick with it.

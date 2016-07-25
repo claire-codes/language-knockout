@@ -1,8 +1,7 @@
 {
-  "name": "knockout-highlighter",
+  "name": "language-knockout",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
   "engines": {
     "atom": "*"
   },

@@ -15,12 +15,12 @@
         'name': 'constant.numeric.knockout'
     }
     {
-        'begin': '<!--'
+        'begin': '<!--( ?)ko'
         'captures':
             '0':
                 'name': 'punctuation.definition.comment.knockout'
         'end': '--\\s*>'
-        'name': 'comment.block.html'
+        'name': 'comment.block.knockout'
         'patterns': [
             {
                 'match': '--(?!-*\\s*>)'

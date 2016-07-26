@@ -20,6 +20,7 @@ This is what we originally had:
 
 It seems to take the first one it comes across: if I put two patterns for the same symbol in the same cson file, it uses the first one in the file.
 
+```json
 {
     'match': '42'
     'name': 'constant.numeric.foo'
@@ -28,6 +29,7 @@ It seems to take the first one it comes across: if I put two patterns for the sa
     'match': '42'
     'name': 'constant.numeric.bar'
 }
+```
 
 will be foo.
 

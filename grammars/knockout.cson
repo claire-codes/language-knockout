@@ -3,24 +3,12 @@
 'fileTypes': ['HTML', 'phtml']
 'patterns': [
     {
-        'match': 'foobar'
-        'name': 'constant.string.foo'
-    }
-    {
-        'match': 'foo'
-        'name': 'constant.string.bar'
-    }
-    {
-        'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b'
-        'name': 'constant.numeric.knockout'
-    }
-    {
-        'begin': '<!--( ?)ko'
+        'begin': '<!--( ?)(\/*)ko'
         'captures':
             '0':
-                'name': 'punctuation.definition.comment.knockout'
+                'name': 'punctuation.definition.tag.knockout'
         'end': '--\\s*>'
-        'name': 'comment.block.knockout'
+        'name': 'string.block.knockout'
         'patterns': [
             {
                 'match': '--(?!-*\\s*>)'
@@ -31,5 +19,5 @@
             }
         ]
     }
-        {'include': 'text.html.basic'}
+    {'include': 'text.html.basic'}
 ]

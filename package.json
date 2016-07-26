@@ -6,8 +6,13 @@
     "atom": "*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Run 'Window: Run package specs' command from command palette\" && exit 1",
+    "lint": "coffeelint ."
   },
   "author": "Claire Parker <claire.parker87@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "coffeelint": "^1.15.7",
+    "knockout": "^3.4.0"
+  }
 }

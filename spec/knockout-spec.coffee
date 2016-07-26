@@ -12,21 +12,12 @@ describe "Knockout grammar", ->
     expect(grammar).toBeTruthy()
     expect(grammar.scopeName).toBe "source.knockout"
 
-  xit "tokenizes comments in internal subsets correctly", ->
-    lines = grammar.tokenizeLines """
-      <!DOCTYPE root [
-      <a> <!-- [] -->
-      <b> <!-- [] -->
-      <c> <!-- [] -->
-      ]>
-    """
+  it "tokenizes comments in internal subsets correctly", ->
+    {tokens} = grammar.tokenizeLine('<!-- ko: foreach floop -->')
+    
+    console.log tokens
 
-    expect(lines[1][1]).toEqual value: '<!--', scopes: ['text.xml', 'meta.tag.sgml.doctype.xml', 'meta.internalsubset.xml', 'comment.block.xml', 'punctuation.definition.comment.xml']
-    expect(lines[2][1]).toEqual value: '<!--', scopes: ['text.xml', 'meta.tag.sgml.doctype.xml', 'meta.internalsubset.xml', 'comment.block.xml', 'punctuation.definition.comment.xml']
-    expect(lines[3][1]).toEqual value: '<!--', scopes: ['text.xml', 'meta.tag.sgml.doctype.xml', 'meta.internalsubset.xml', 'comment.block.xml', 'punctuation.definition.comment.xml']
-
-  xit "tokenizes empty element meta.tag.no-content.xml", ->
-    {tokens} = grammar.tokenizeLine('<n></n>')
+    expect(tokens[0]).toEqual value: '<!--', scopes: []
     expect(tokens[0]).toEqual value: '<',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'punctuation.definition.tag.xml']
     expect(tokens[1]).toEqual value: 'n',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'entity.name.tag.xml', 'entity.name.tag.localname.xml']
     expect(tokens[2]).toEqual value: '>',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'punctuation.definition.tag.xml']

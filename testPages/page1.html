@@ -55,9 +55,11 @@
     </p>
     <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
     
-    <!-- ko foreach: myItems -->
+    <!-- ko data-bind="foreach: myItems" -->
         <div>Item <span data-bind="text: $data"></span></div>
     <!-- /ko -->
+    
+    <!-- I am a normal comment -->
 
     <ul data-bind="foreach: myItems">
         <li data-bind="text: $data"></li>

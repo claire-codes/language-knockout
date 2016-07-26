@@ -3,16 +3,22 @@
 'fileTypes': ['HTML', 'phtml']
 'patterns': [
     {
-        'begin': '<!--( ?)(\/*)ko'
-        'captures':
-            '0':
+        'begin': '(<!--( ?)(\/*))(ko)'
+        'beginCaptures':
+            '1':
                 'name': 'punctuation.definition.tag.knockout'
+            '4':
+                'name': 'entity.tag.name.knockout'
         'end': '--\\s*>'
-        'name': 'string.block.knockout'
+        'name': 'meta.tag.block.knockout'
         'patterns': [
             {
                 'match': '--(?!-*\\s*>)'
                 'name': 'invalid.illegal.bad-comments-or-CDATA.html'
+            }
+            {
+                'match': '42'
+                'name': 'claire.foo'
             }
             {
                 'include': '#embedded-code'
@@ -21,3 +27,161 @@
     }
     {'include': 'text.html.basic'}
 ]
+'repository':
+  'embedded-code':
+    'patterns': [
+      {
+        'include': '#entities'
+      }
+      {
+        'include': '#string-double-quoted'
+      }
+      {
+        'include': '#string-single-quoted'
+      }
+      {
+        'include': '#tag-generic-attribute'
+      }
+      {
+        'include': '#tag-id-attribute'
+      }
+      {
+        'include': '#tag-stuff'
+      }
+      {
+        'include': '#unquoted-attribute'
+      }
+    ]
+  'entities':
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'punctuation.definition.entity.html'
+          '3':
+            'name': 'punctuation.definition.entity.html'
+        'match': '(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)'
+        'name': 'constant.character.entity.html'
+      }
+      {
+        'match': '&'
+        'name': 'invalid.illegal.bad-ampersand.html'
+      }
+    ]
+  'string-double-quoted':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.html'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.html'
+    'name': 'string.quoted.double.html'
+    'patterns': [
+      {
+        'include': '#embedded-code'
+      }
+      {
+        'include': '#entities'
+      }
+    ]
+  'string-single-quoted':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.html'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.html'
+    'name': 'string.quoted.single.html'
+    'patterns': [
+      {
+        'include': '#embedded-code'
+      }
+      {
+        'include': '#entities'
+      }
+    ]
+  'tag-generic-attribute':
+    'match': '(?<=[^=])\\b([a-zA-Z0-9:-]+)'
+    'name': 'entity.other.attribute-name.html'
+  'tag-id-attribute':
+    'begin': '\\b(id)\\b\\s*(=)'
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.id.html'
+      '2':
+        'name': 'punctuation.separator.key-value.html'
+    'end': '(?<=\'|")|(?=\\s|>)'
+    'name': 'meta.attribute-with-value.id.html'
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.id.html'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.double.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'begin': '\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.id.html'
+        'end': '\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.single.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'include': '#unquoted-attribute'
+      }
+    ]
+  'tag-stuff':
+    'patterns': [
+      {
+        'include': '#tag-id-attribute'
+      }
+      {
+        'include': '#tag-generic-attribute'
+      }
+      {
+        'include': '#string-double-quoted'
+      }
+      {
+        'include': '#string-single-quoted'
+      }
+      {
+        'include': '#embedded-code'
+      }
+      {
+        'include': '#unquoted-attribute'
+      }
+    ]
+  'unquoted-attribute':
+    'match': '(?<==)(?:[^\\s<>/\'"]|/(?!>))+'
+    'name': 'string.unquoted.html'

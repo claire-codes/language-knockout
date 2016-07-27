@@ -20,10 +20,6 @@
                 'name': 'invalid.illegal.bad-comments-or-CDATA.html'
             }
             {
-                'match': '42'
-                'name': 'claire.foo'
-            }
-            {
                 'include': '#tag-stuff'
             }
         ]

@@ -2,7 +2,7 @@
 
 Knockout language package for Atom editor.
 
-There is currently no special syntac highlighting for some special parts of the KnockoutJs library/framework/mess - it's almost as if no one uses KnockoutJs anymore! 😲
+There is currently no special syntax highlighting for some special parts of the KnockoutJs library/framework/mess - it's almost as if no one uses KnockoutJs anymore! :coffee::frog:
 
 ### Notes
 
@@ -20,7 +20,7 @@ This is what we originally had:
 
 It seems to take the first one it comes across: if I put two patterns for the same symbol in the same cson file, it uses the first one in the file.
 
-```json
+```cson
 {
     'match': '42'
     'name': 'constant.numeric.foo'

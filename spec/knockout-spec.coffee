@@ -17,10 +17,11 @@ describe "Knockout grammar", ->
     
     console.log tokens
 
-    expect(tokens[0]).toEqual value: '<!--', scopes: []
-    expect(tokens[0]).toEqual value: '<',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'punctuation.definition.tag.xml']
-    expect(tokens[1]).toEqual value: 'n',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'entity.name.tag.xml', 'entity.name.tag.localname.xml']
-    expect(tokens[2]).toEqual value: '>',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'punctuation.definition.tag.xml']
-    expect(tokens[3]).toEqual value: '</',  scopes: ['text.xml', 'meta.tag.no-content.xml', 'punctuation.definition.tag.xml']
-    expect(tokens[4]).toEqual value: 'n',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'entity.name.tag.xml', 'entity.name.tag.localname.xml']
-    expect(tokens[5]).toEqual value: '>',   scopes: ['text.xml', 'meta.tag.no-content.xml', 'punctuation.definition.tag.xml']
+    expect(tokens[0]).toEqual value: '<!-- ', scopes:  ["source.knockout", "meta.tag.block.knockout", "punctuation.definition.tag.begin.knockout"]
+    expect(tokens[1]).toEqual value: 'ko', scopes:  ["source.knockout", "meta.tag.block.knockout", "entity.tag.name.knockout"]
+    expect(tokens[2]).toEqual value: ':', scopes:  ["source.knockout", "meta.tag.block.knockout", "entity.other.attribute-name.html"]
+    expect(tokens[3]).toEqual value: ' ', scopes:  ["source.knockout", "meta.tag.block.knockout"]
+    # expect(tokens[4]).toEqual value: '<!-- ', scopes:  ["source.knockout", "meta.tag.block.knockout", "punctuation.definition.tag.begin.knockout"]
+    # expect(tokens[5]).toEqual value: '<!-- ', scopes:  ["source.knockout", "meta.tag.block.knockout", "punctuation.definition.tag.begin.knockout"]
+    # expect(tokens[6]).toEqual value: '<!-- ', scopes:  ["source.knockout", "meta.tag.block.knockout", "punctuation.definition.tag.begin.knockout"]
+    

@@ -1,15 +1,18 @@
 'scopeName': 'source.knockout'
 'name': 'KnockoutJs'
-'fileTypes': ['HTML', 'phtml']
+'fileTypes': ['html', 'phtml']
 'patterns': [
     {
         'begin': '(<!--( ?)(\/*))(ko)'
         'beginCaptures':
             '1':
-                'name': 'punctuation.definition.tag.knockout'
+                'name': 'punctuation.definition.tag.begin.knockout'
             '4':
                 'name': 'entity.tag.name.knockout'
-        'end': '--\\s*>'
+        'end': '(--\\s*>)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.tag.end.knockout'
         'name': 'meta.tag.block.knockout'
         'patterns': [
             {
@@ -21,7 +24,7 @@
                 'name': 'claire.foo'
             }
             {
-                'include': '#embedded-code'
+                'include': '#tag-stuff'
             }
         ]
     }
@@ -78,14 +81,6 @@
       '0':
         'name': 'punctuation.definition.string.end.html'
     'name': 'string.quoted.double.html'
-    'patterns': [
-      {
-        'include': '#embedded-code'
-      }
-      {
-        'include': '#entities'
-      }
-    ]
   'string-single-quoted':
     'begin': '\''
     'beginCaptures':

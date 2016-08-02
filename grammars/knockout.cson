@@ -25,7 +25,7 @@
                     '1':
                         'name': 'entity.other.attribute-name.knockout'
                     '3':
-                        'name': 'foo.claire.c'
+                        'name': 'variable.language.js'
             }
             # {
             #     'include': '#tag-stuff'

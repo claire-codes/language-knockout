@@ -20,8 +20,16 @@
                 'name': 'invalid.illegal.bad-comments-or-CDATA.html'
             }
             {
-                'include': '#tag-stuff'
+                'match': '(\\w+)(: *)(\\w+)'
+                'captures':
+                    '1':
+                        'name': 'entity.other.attribute-name.knockout'
+                    '3':
+                        'name': 'foo.claire.c'
             }
+            # {
+            #     'include': '#tag-stuff'
+            # }
         ]
     }
     {'include': 'text.html.basic'}
@@ -97,7 +105,7 @@
     ]
   'tag-generic-attribute':
     'match': '(?<=[^=])\\b([a-zA-Z0-9:-]+)'
-    'name': 'entity.other.attribute-name.html'
+    'name': 'entity.other.attribute-name.knockout'
   'tag-id-attribute':
     'begin': '\\b(id)\\b\\s*(=)'
     'captures':

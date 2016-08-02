@@ -1,24 +1,48 @@
 var expect = require('chai').expect;
 
+/**
+  * This is an attempt to document what the regexes in the grammar match
+  **/
 describe("Virtual bindings capturing regexes", function() {
+    // N.B. You don't need to escape the special chars in direct JS but we do in the cson file
     var innerContentsRegex = /(\w+)(: *)(\w+)/;
+    var results = [];
     
-    
-    it("is alive", function() {
-        expect(innerContentsRegex.exec('foreach: foo')[1]).to.equal('foreach');
-    });
-    xit("returns null if args are wrong", function() {
-      testArray = ['foo','bar'];
-      expect(howMany()).to.equal(null);
-      expect(howMany(testArray)).to.equal(null);
-      expect(howMany('foo')).to.equal(null);
+    // We want to ignore the first array element as it's just the string,
+    // and if the other results are correct the first one will be,
+    // therefore we splice(1) the results.
+    it("*foreach: foo*", function() {
+        results = innerContentsRegex.exec('foreach: foo').splice(1);
+        expect(results.length).to.equal(3);
+        expect(results).to.eql(['foreach', ': ', 'foo']);
     });
 
-    xit("returns null if arg types aren't array & string/number", function() {
-      var anArray = [];
-      var anObject = {};
-      expect(howMany(anArray, anArray)).to.eq(null);
-      expect(howMany(anArray, anObject)).to.eq(null);
-      expect(howMany(anObject, anArray)).to.eq(null);
+    it("* foreach: foo*", function() {
+        results = innerContentsRegex.exec(' foreach: foo').splice(1);
+        expect(results.length).to.equal(3);
+        expect(results).to.eql(['foreach', ': ', 'foo']);
     });
+
+    it("*foreach:foo*", function() {
+        results = innerContentsRegex.exec('foreach:foo').splice(1);
+        expect(results.length).to.equal(3);
+        expect(results).to.eql(['foreach', ':', 'foo']);
+    });
+
+    it("*foreach: foo *", function() {
+        results = innerContentsRegex.exec('foreach: foo ').splice(1);
+        expect(results.length).to.equal(3);
+        expect(results).to.eql(['foreach', ': ', 'foo']);
+    });
+    it("* foreach: foo *", function() {
+        results = innerContentsRegex.exec(' foreach: foo ').splice(1);
+        expect(results.length).to.equal(3);
+        expect(results).to.eql(['foreach', ': ', 'foo']);
+    });
+    it("*  foreach:  foo  *", function() {
+        results = innerContentsRegex.exec('  foreach:  foo  ').splice(1);
+        expect(results.length).to.equal(3);
+        expect(results).to.eql(['foreach', ':  ', 'foo']);
+    });
+
 });

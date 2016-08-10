@@ -1,4 +1,4 @@
-'scopeName': 'source.knockout'
+'scopeName': 'text.html.knockout'
 'name': 'KnockoutJs'
 'fileTypes': ['html', 'phtml']
 'patterns': [

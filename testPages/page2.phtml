@@ -3,50 +3,11 @@
 
 <head>
     <script src="../node_modules/knockout/build/output/knockout-latest.debug.js"></script>
-    <style>
-        body {
-            font-family: arial;
-            font-size: 14px;
-        }
-        
-        .liveExample {
-            padding: 1em;
-            background-color: #EEEEDD;
-            border: 1px solid #CCC;
-            max-width: 655px;
-        }
-        
-        .liveExample input {
-            font-family: Arial;
-        }
-        
-        .liveExample b {
-            font-weight: bold;
-        }
-        
-        .liveExample p {
-            margin-top: 0.9em;
-            margin-bottom: 0.9em;
-        }
-        
-        .liveExample select[multiple] {
-            width: 100%;
-            height: 8em;
-        }
-        
-        .liveExample h2 {
-            margin-top: 0.4em;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
 </head>
 
 <body>
-    <h1>42</h1>
-    <h1>foo</h1>
-    <h1>foobar</h1>
-    <h2>ko bum ko</h2>
+    <h2>ko hohum ko</h2>
     <p>First name:
         <input data-bind="value: firstName" />
     </p>
@@ -64,6 +25,8 @@
     <ul data-bind="foreach: myItems">
         <li data-bind="text: $data"></li>
     </ul>
+    
+    <div><?php echo("I am PHP"); ?></div>
 
     <script>
         var ViewModel = function(first, last) {

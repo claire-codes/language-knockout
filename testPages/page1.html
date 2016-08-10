@@ -9,7 +9,7 @@
 <body>
     <p>This is a test page - viewing this in the browser defeats the object. It has examples of *working* KnockoutJs syntax that you can view in Atom to test that the syntax highlighter is working as expected.</p>
 
-    <p>First name:
+    <p class=unquoted>First name:
         <input data-bind="value: firstName" />
     </p>
     <p>Last name:
@@ -26,6 +26,8 @@
     <ul data-bind="foreach: myItems">
         <li data-bind="text: $data"></li>
     </ul>
+    
+    <div><?php echo("I am PHP"); ?></div>
 
     <script>
         var ViewModel = function(first, last) {

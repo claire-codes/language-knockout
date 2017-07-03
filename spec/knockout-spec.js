@@ -1,5 +1,5 @@
 describe("Knockout Grammar", function() {
-    let grammar = null;
+    var grammar = null;
 
     beforeEach(function() {
         waitsForPromise(function() {
@@ -16,38 +16,38 @@ describe("Knockout Grammar", function() {
     });
 
     it("tokenizes comments in internal subsets correctly", function() {
-        let tokens = grammar.tokenizeLine('<!-- ko foreach: floop -->').tokens;
+        var tokens = grammar.tokenizeLine("<!-- ko foreach: floop -->").tokens;
 
         expect(tokens[0]).toEqual({
-            value: '<!-- ',
+            value: "<!-- ",
             scopes: ["source.knockout", "meta.tag.block.knockout", "punctuation.definition.tag.begin.knockout"]
         });
         expect(tokens[1]).toEqual({
-            value: 'ko',
+            value: "ko",
             scopes: ["source.knockout", "meta.tag.block.knockout", "entity.tag.name.knockout"]
         });
         expect(tokens[2]).toEqual({
-            value: ' ',
+            value: " ",
             scopes: ["source.knockout", "meta.tag.block.knockout"]
         });
         expect(tokens[3]).toEqual({
-            value: 'foreach',
+            value: "foreach",
             scopes: ["source.knockout", "meta.tag.block.knockout", "entity.other.attribute-name.knockout"]
         });
         expect(tokens[4]).toEqual({
-            value: ': ',
+            value: ": ",
             scopes: ["source.knockout", "meta.tag.block.knockout"]
         });
         expect(tokens[5]).toEqual({
-            value: 'floop',
+            value: "floop",
             scopes: ["source.knockout", "meta.tag.block.knockout", "variable.language.js"]
         });
         expect(tokens[6]).toEqual({
-            value: ' ',
+            value: " ",
             scopes: ["source.knockout", "meta.tag.block.knockout"]
         });
         expect(tokens[7]).toEqual({
-            value: '-->',
+            value: "-->",
             scopes: ["source.knockout", "meta.tag.block.knockout", "punctuation.definition.tag.end.knockout"]
         });
     });

@@ -7,16 +7,16 @@
   },
   "scripts": {
     "test": "echo \"Run 'Window: Run package specs' command from command palette\" && exit 1",
-    "lint": "coffeelint .",
+    "lint": "eslint .",
     "mocha": "mocha -R spec",
     "nyan": "mocha -R nyan"
   },
-  "author": "Claire Parker <claire.parker87@gmail.com>",
+  "author": "Claire Parker <claireparker@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
-    "coffeelint": "^1.15.7",
     "knockout": "^3.4.0",
-    "mocha": "^2.5.3"
+    "mocha": "^2.5.3",
+    "eslint": "^4.1.1"
   }
 }
